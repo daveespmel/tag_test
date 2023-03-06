@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Website</title>
+
+  <!-- Google Analytics tracking code -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <!-- Facebook Pixel tracking code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'FACEBOOK_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+</head>
+<body>
+  <h1>My Website</h1>
+
+  <p>Welcome to my website! Click the button below to trigger a custom event.</p>
+  
+  <!-- Button to trigger custom event -->
+  <button onclick="handleClick()">Click me!</button>
+
+  <!-- JavaScript code to handle button click -->
+  <script>
+    function handleClick() {
+      // Send event data to Google Analytics
+      gtag('event', 'button_click', {
+        'event_category': 'Engagement',
+        'event_label': 'Homepage'
+      });
+      
+      // Send event data to Facebook Pixel
+      fbq('track', 'CustomEvent', {
+        'category': 'Engagement',
+        'label': 'Homepage'
+      });
+    }
+  </script>
+</body>
+</html>
